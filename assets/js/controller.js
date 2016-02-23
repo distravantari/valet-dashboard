@@ -17,11 +17,8 @@ appControllers.controller('LoginController',['$scope','$http',
       $scope.userlogin = function(){
         user = $scope.form.username;
         pass = $scope.form.password;
-        // alert(user+" "+pass);
-        if (user == 'valet@uncle' && pass == 'shithappend') {
-          var ses = makeid();
-          localStorage.setItem("session", ses);
 
+        if (user == "valet@uncle" && pass == 'thisisnode8') {
           $('.homeb').removeClass('hidden');
           $('.driverb').removeClass('hidden');
           $('.transb').removeClass('hidden');
@@ -29,17 +26,6 @@ appControllers.controller('LoginController',['$scope','$http',
           $('.regb').removeClass('hidden');
           window.location.assign("#/dashboard");
         }
-
-        function makeid(){
-            var text = "";
-            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-            for( var i=0; i < 5; i++ )
-                text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-            return text;
-        }
-
       }
     }
 ]);
@@ -73,19 +59,19 @@ appControllers.controller('AddtransController',['$scope','$http',
       $.get(domain+'/driverC'+things2).success(function(data1){
           // alert(data.message.length);
           alldriver = Number(data1.message.length);
-          $('.drivercount').html(alldriver);
+          $('.drivercount').text(alldriver);
 
           $http.get(domain+'/driverOn'+things2).success(function(data){
               //ng-repeat
               $scope.drivers=data.message;
 
               // alert(data.message.length);
-              $('.driveronline').html(data.message.length);
+              $('.driveronline').text(data.message.length);
               onlineD = data.message.length;
               // driver ofline
               var offlineD = Number(alldriver)-Number(onlineD);
               // alert(offlineD);
-              $('.driveroff').html(offlineD);
+              $('.driveroff').text(offlineD);
               // alert("total: "+alldriver+" on: "+onlineD+" of: "+offlineD);
           });
       });
@@ -264,9 +250,9 @@ appControllers.controller('AddtransController',['$scope','$http',
                                   success: function(response){
                                     var inf = JSON.parse(response);
                                     // alert(inf.Driver);
-                                    $('.driver-name').html(inf.Driver[0].name);
-                                    $('.driver-phone').html(inf.Driver[0].phone);
-                                    $('.driver-credit').html('$'+inf.Driver[0].credit);
+                                    $('.driver-name').text(inf.Driver[0].name);
+                                    $('.driver-phone').text(inf.Driver[0].phone);
+                                    $('.driver-credit').text('$'+inf.Driver[0].credit);
                                   },
                                   error: function(xhr, status, error){
                                     console.log('error '+trans);
@@ -342,9 +328,9 @@ appControllers.controller('AddtransController',['$scope','$http',
                           success: function(response){
                             var inf = JSON.parse(response);
                             // alert(inf.Driver);
-                            $('.driver-name').html(inf.Driver[0].name);
-                            $('.driver-phone').html(inf.Driver[0].phone);
-                            $('.driver-credit').html('$'+inf.Driver[0].credit);
+                            $('.driver-name').text(inf.Driver[0].name);
+                            $('.driver-phone').text(inf.Driver[0].phone);
+                            $('.driver-credit').text('$'+inf.Driver[0].credit);
                           },
                           error: function(xhr, status, error){
                             console.log('error '+trans);
@@ -485,36 +471,30 @@ appControllers.controller('DashboardController',['$scope','$http',
         }, function(){
           $(this).attr("src", "assets/img/monkey.png");
       });
-      $scope.userlogout = function(){
-        // alert('session expired');
-        window.location.assign('#/login');
-        localStorage.setItem("session", 'undefined');
-        // localStorage.session.setItem('session'.'undefined');
-      }
 
       // server uptime LIVE
       $.post(domain+'/authenticate').success(function(data){
           // alert(data.message.length);
-          $('.serverstatus').html('UP');
-          $('.serverspeed').html('| 356ms.');
+          $('.serverstatus').text('UP');
+          $('.serverspeed').text('| 356ms.');
           $('.serverimg').attr("src",'assets/img/up.png');
 
       }).error(function(err){
         // alert('DOWN');
-        $('.serverstatus').html('DOWN');
+        $('.serverstatus').text('DOWN');
         $('.serverimg').attr("src",'assets/img/down.png');
       });
 
       // server uptime TESTING
       $.post(domain2+'/authenticate').success(function(data){
           // alert(data.message.length);
-          $('.serverstatus2').html('UP');
-          $('.serverspeed2').html('| 356ms.');
+          $('.serverstatus2').text('UP');
+          $('.serverspeed2').text('| 356ms.');
           $('.serverimg2').attr("src",'assets/img/up.png');
 
       }).error(function(err){
         // alert('DOWN');
-        $('.serverstatus2').html('DOWN');
+        $('.serverstatus2').text('DOWN');
         $('.serverimg2').attr("src",'assets/img/down.png');
       });
 
@@ -524,21 +504,21 @@ appControllers.controller('DashboardController',['$scope','$http',
       // $scope.drivers = [{}];
       // count driver
       $.get(domain+'/driverC'+things2).success(function(data1){
-          // alert(data.message.length);
+          // alert(data1);
           alldriver = Number(data1.message.length);
-          $('.drivercount').html(alldriver);
+          $('.drivercount').text(alldriver);
 
           $http.get(domain+'/driverOn'+things2).success(function(data){
               //ng-repeat
               $scope.drivers=data.message;
 
               // alert(data.message.length);
-              $('.driveronline').html(data.message.length);
+              $('.driveronline').text(data.message.length);
               onlineD = data.message.length;
               // driver ofline
               var offlineD = Number(alldriver)-Number(onlineD);
               // alert(offlineD);
-              $('.driveroff').html(offlineD);
+              $('.driveroff').text(offlineD);
               // alert("total: "+alldriver+" on: "+onlineD+" of: "+offlineD);
           });
       });
@@ -546,17 +526,17 @@ appControllers.controller('DashboardController',['$scope','$http',
       // count driver driveronjob
       $.get(domain+'/driverStartJob'+things2).success(function(data){
           // alert(data.message.length);
-          $('.driveronjob').html(data.message.length);
+          $('.driveronjob').text(data.message.length);
       });
 
       //total user
       $.get(domain+'/Allusers'+things2).success(function(data){
           // alert(data.message.length);
-          $('.totaluser').html(data.message.length);
+          $('.totaluser').text(data.message.length);
       });
       $.get(domain+'/regToday'+things2).success(function(data){
           // alert(data.message.length);
-          $('.usertoday').html(data.message.length);
+          $('.usertoday').text(data.message.length);
       });
 
       //request list
@@ -572,7 +552,7 @@ appControllers.controller('DashboardController',['$scope','$http',
             "<hr>";
           }
           $('.reqList').html(res);
-          $('.reqTot').html(data.message.length);
+          $('.reqTot').text(data.message.length);
 
           res2 +=
           "username: <br><b>"+data.message[data.message.length-1].username+"</b><br>"+
@@ -581,8 +561,8 @@ appControllers.controller('DashboardController',['$scope','$http',
           $('.newTrans').html(res2);
           var date = data.message[data.message.length-1].create.split('T');
           var time = date[1].split('.');
-          $('.newTransDate').html(date[0]);
-          $('.newTransTime').html(" "+time[0]);
+          $('.newTransDate').text(date[0]);
+          $('.newTransTime').text(" "+time[0]);
 
           //notification
           var audio = new Audio('assets/audio/notif2.mp3');
@@ -617,9 +597,9 @@ appControllers.controller('DashboardController',['$scope','$http',
           var request = Number(userLogReg)/Number(userLog)*100;
           var cancel = Number(userLogCancel)/Number(userLog)*100;
 
-          $('.userreg').html(request.toFixed(1));
-          $('.usercancel').html(cancel.toFixed(1));
-          $('.userlogtot').html(userLog);
+          $('.userreg').text(request.toFixed(1));
+          $('.usercancel').text(cancel.toFixed(1));
+          $('.userlogtot').text(userLog);
 
           info = new Highcharts.Chart({
             chart: {
@@ -666,7 +646,7 @@ appControllers.controller('DashboardController',['$scope','$http',
       $.get(domain+'/driverLog'+things2).success(function(data){
           // alert(data.message.length);
           driverLog = Number(data.message.length);
-          $('.driverlogtot').html(driverLog);
+          $('.driverlogtot').text(driverLog);
       });
       $.get(domain+'/driverLogFin'+things2).success(function(data){
           // alert(data.message.length);
@@ -677,8 +657,8 @@ appControllers.controller('DashboardController',['$scope','$http',
           var cancel = driverLogCancel/driverLog*100;
           // alert(driverLogFin);
 
-          $('.driverfin').html(request.toFixed(1));
-          $('.drivercancel').html(cancel.toFixed(1));
+          $('.driverfin').text(request.toFixed(1));
+          $('.drivercancel').text(cancel.toFixed(1));
 
           info = new Highcharts.Chart({
             chart: {
