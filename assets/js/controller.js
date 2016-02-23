@@ -19,6 +19,8 @@ appControllers.controller('LoginController',['$scope','$http',
         pass = $scope.form.password;
 
         if (user == "valet@uncle" && pass == 'thisisnode8') {
+          var ses = makeid();
+          localStorage.setItem('session',ses);
           $('.homeb').removeClass('hidden');
           $('.driverb').removeClass('hidden');
           $('.transb').removeClass('hidden');
@@ -27,6 +29,16 @@ appControllers.controller('LoginController',['$scope','$http',
           window.location.assign("#/dashboard");
         }
       }
+
+      function makeid(){
+           var text = "";
+           var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+           for( var i=0; i < 5; i++ )
+               text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+           return text;
+       }
     }
 ]);
 // end of login.html
@@ -471,6 +483,11 @@ appControllers.controller('DashboardController',['$scope','$http',
         }, function(){
           $(this).attr("src", "assets/img/monkey.png");
       });
+
+      $scope.userlogout = function(){
+        localStorage.setItem('session','undefined');
+        window.location.assign("#/login");
+      }
 
       // server uptime LIVE
       $.post(domain+'/authenticate').success(function(data){

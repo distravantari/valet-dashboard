@@ -9,7 +9,7 @@
         <dtitle class="username">User Profile</dtitle>
         <hr>
     <div class="thumbnail">
-      <h1>LOGOUT ?</h1>
+      <h1> LOGOUT ?</h1>
       <a><img src="assets/img/monkey.png" class="logout" ng-click ="userlogout()" style="margin-top:-70px"></a>
     </div><!-- /thumbnail -->
     <h1 class="username"></h1>
@@ -163,6 +163,7 @@
       function refresh(){
         if (localStorage.getItem('session') == 'undefined'){
           // alert('session expired');
+          clearInterval(ref);
           window.location.assign("#/login");
         }
       }
