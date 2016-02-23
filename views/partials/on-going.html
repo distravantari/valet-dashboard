@@ -1,0 +1,35 @@
+<div class="container">
+
+  <!-- CONTENT -->
+<div class="row">
+<div class="col-sm-12 col-lg-12">
+  <h4><strong>List Of on-going Transaction</strong></h4>
+  <input type="text" placeholder="Enter Keyword" ng-model="query" class="form-control input-lg">
+    <table class="display">
+        <thead>
+          <tr>
+            <th>username</th>
+            <th>create</th>
+            <th>pickUpAddress</th>
+            <th>destinationAddress</th>
+            <th>driver</th>
+            <th>advance time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="odd" ng-repeat="trans in transaction | filter:query">
+            <td class="center">{{trans.username}}</td>
+            <td>{{trans.create}}</td>
+            <td>{{trans.pickUpAddress}}</td>
+            <td class="center">{{trans.destinationAddress}}</td>
+            <td class="center driverName">{{trans.driverId}}</td>
+            <td class="center">{{trans.advanceTime}}</td>
+          </tr>
+        </tbody>
+       </table><!--/END First Table -->
+   <br>
+
+</div><!--/span12 -->
+  </div><!-- /row -->
+ </div> <!-- /container -->
+  <br>

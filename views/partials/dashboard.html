@@ -1,0 +1,175 @@
+<div class="container">
+
+<!-- FIRST ROW OF BLOCKS -->
+  <div class="row">
+
+  <!-- USER PROFILE BLOCK -->
+    <div class="col-sm-3 col-lg-3">
+      <div class="dash-unit">
+        <dtitle class="username">User Profile</dtitle>
+        <hr>
+    <div class="thumbnail">
+      <h1>LOGOUT ?</h1>
+      <a><img src="assets/img/monkey.png" class="logout" ng-click ="userlogout()" style="margin-top:-70px"></a>
+    </div><!-- /thumbnail -->
+    <h1 class="username"></h1>
+    <h3>Valet Uncle, Singapore</h3>
+    <br>
+      <div class="info-user">
+        <span aria-hidden="true" class="li_settings fs1"></span>
+        <span aria-hidden="true" class="li_mail fs1"></span>
+        <span aria-hidden="true" class="li_paperplane fs1"></span>
+      </div>
+      <!-- <ul class="">
+        <li class="fa fa-sign-out"></li>
+      </ul> -->
+    </div>
+    </div>
+
+    <!-- DRIVER DONUT CHART BLOCK -->
+      <div class="col-sm-3 col-lg-3">
+        <div class="dash-unit">
+        <dtitle>Driver Log : <span class="driverlogtot"></span> TOTAL</dtitle>
+        <hr>
+          <div id="space"></div>
+          <p><span style="color:rgb(250, 29, 45)">driver finish</span> | driver cancel</p> <h2><span style="color:rgb(250, 29, 45)"><span class="driverfin"></span>%</span> <span class="drivercancel"></span>%</h2>
+    </div>
+      </div>
+
+  <!-- USER DONUT CHARTS -->
+    <div class="col-sm-3 col-lg-3">
+      <div class="dash-unit">
+      <dtitle>User Log : <span class="userlogtot"></span> TOTAL</dtitle>
+      <hr>
+        <div id="load"></div>
+        <p><span style="color:rgb(203, 225, 74)">user request </span> | user cancel</p> <h2><span style="color:rgb(203, 225, 74)"><span class="userreg"></span>%</span> <span class="usercancel"></span>%</h2>
+  </div>
+    </div>
+
+
+    <div class="col-sm-3 col-lg-3">
+
+  <!-- LOCAL TIME BLOCK -->
+      <div class="half-unit">
+        <dtitle>Latest Request ( <span class="newTransDate" style="color:rgb(203, 225, 74)"></span><span class="newTransTime" style="color:red"></span> )</dtitle>
+        <hr>
+          <div class="">
+            <p class="newTrans"></p>
+          </div>
+  </div>
+
+  <!-- SERVER UPTIME -->
+  <div class="half-unit">
+        <dtitle>Server Uptime</dtitle>
+        <hr>
+        <div class="cont">
+        <!-- <img src="assets/img/up.png" alt=""> -->
+      <p> <img class="serverimg" alt="" /><bold><span class="serverstatus"></span></bold> <span class="serverspeed"></span></p>
+    </div>
+  </div>
+
+    </div>
+  </div><!-- /row -->
+
+  <!-- SECOND ROW OF BLOCKS -->
+    <div class="row">
+      <div class="col-sm-3 col-lg-3">
+     <!-- WATCHERS BLOCK -->
+        <div class="dash-unit">
+        <dtitle>Driver online (<span class="driveronline"></span>)</dtitle>
+        <hr>
+        <div>
+          <div class="framemail" style="overflow-y: scroll; height:230px;">
+            <div class="window">
+              <ul class="mail">
+                  <li ng-repeat="driver in drivers">
+                  <!-- <li> -->
+                      <i class="unread"></i>
+                      <img class="avatar" src="{{ driver.photo }}" alt="avatar">
+                      <p class="sender">{{ driver.NAME }}</p>
+                      <p class="message">{{ driver.phone }}</p>
+                      <div class="actions">
+                        <p class="message" style="margin-left:-10px">credit:{{ driver.credit }}</p>
+                      </div>
+                  </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div><!-- /dash-unit -->
+  </div><!-- /span3 -->
+
+      <div class="col-sm-3 col-lg-3">
+
+  <!-- DRIVERS INFO BLOCK -->
+        <div class="half-unit">
+          <dtitle>Drivers Info</dtitle>
+          <hr>
+          <div class="cont">
+          <p><bold><span class="drivercount"></span></bold></p>
+          <p><img src="assets/img/up-small.png" alt=""> <span class="driveronline"></span> Online. | <img src="assets/img/down-small.png" alt=""> <span class="driveroff"></span> Offline.</p>
+          </div>
+        </div>
+
+  <!-- DRIVER ON JOB BLOCK -->
+        <div class="half-unit">
+          <dtitle>Driver On Job</dtitle>
+          <hr>
+          <div class="cont">
+          <p><bold><span class="driveronjob"></span> Drivers</bold></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-3 col-lg-3">
+  <!-- TOTAL REGISTER BLOCK -->
+        <div class="half-unit">
+          <dtitle>Total Registered User</dtitle>
+          <hr>
+          <div class="cont">
+          <p><bold><span class="totaluser"></span></bold></p>
+          <p><span class="usertoday"></span> Registered Today</p>
+          </div>
+        </div>
+
+        <!-- SERVER TESTING -->
+        <div class="half-unit">
+              <dtitle>Server TESTING</dtitle>
+              <hr>
+              <div class="cont">
+              <!-- <img src="assets/img/up.png" alt=""> -->
+            <p> <img class="serverimg2" alt="" /><bold><span class="serverstatus2"></span></bold> <span class="serverspeed2"></span></p>
+          </div>
+        </div>
+      </div>
+
+  <!-- Transaction BLOCK -->
+      <div class="col-sm-3 col-lg-3">
+        <div class="dash-unit">
+          <dtitle>Transaction Request List: <span class="reqTot"></span> TOTAL</dtitle>
+          <hr>
+          <div class="reqList" style="overflow-y: scroll; height:230px;">
+
+          </div>
+          <div class="pull-right">
+            <a href="http://localhost/valet-dashboard/#/web-transaction"><img height="80px" src="assets/img/plusbtn.png" alt="" style="margin-top:-50px"/></a>
+          </div>
+        </div>
+      </div>
+    </div><!-- /row -->
+
+    <script type="text/javascript">
+      var ref = setInterval(function(){ refresh() }, 100);
+      function refresh(){
+        if (localStorage.getItem('session') == 'undefined'){
+          // alert('session expired');
+          window.location.assign("#/login");
+        }
+      }
+
+      var sessionTimeOut = setTimeout(function(){ logout() }, 10000);
+      function logout(){
+        window.location.assign("#/login");
+      }
+    </script>
+</div> <!-- /container -->

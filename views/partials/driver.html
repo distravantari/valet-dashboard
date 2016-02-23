@@ -1,0 +1,35 @@
+<div class="container">
+
+  <!-- CONTENT -->
+<div class="row">
+<div class="col-sm-12 col-lg-12">
+  <h4><strong>List Of Drivers</strong></h4>
+  <input type="text" placeholder="Enter Keyword" ng-model="query" class="form-control input-lg">
+    <table class="display">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>Username</th>
+            <th>Phone</th>
+            <th>Rating</th>
+            <th>Credit</th>
+            <!-- <th>IMEI</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="odd" ng-repeat="driver in drivers | filter:query">
+            <td>{{driver.objectId}}</td>
+            <td>{{driver.NAME}}</td>
+            <td>{{driver.phone}}</td>
+            <td class="center">{{driver.rating}}</td>
+            <td class="center">{{driver.credit}}</td>
+            <!-- <td class="center">{{driver.IMEI}}</td> -->
+          </tr>
+        </tbody>
+       </table><!--/END First Table -->
+   <br>
+
+</div><!--/span12 -->
+  </div><!-- /row -->
+ </div> <!-- /container -->
+  <br>

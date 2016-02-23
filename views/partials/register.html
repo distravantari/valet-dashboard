@@ -1,0 +1,64 @@
+<div class="container">
+
+      <div class="col-sm-12 col-lg-12">
+        <div id="register-wraper">
+            <form id="register-form" class="form">
+                <legend><img src="assets/img/logo30.png" alt="" /> Uncle Register</legend>
+
+                <!-- first -->
+                <div class="col-sm-6 col-lg-6">
+                  <div class="body">
+                    <!-- first name -->
+                  <label for="name">Name</label>
+                  <input name="name" class="input-huge" type="text" ng-model="reg.names">
+                  <!-- Alias -->
+                  <label>Alias</label>
+                  <input class="input-huge" type="text" ng-model="reg.alias">
+                    <!-- last name -->
+                  <label for="surname">IMEI</label>
+                  <input name="surname" class="input-huge" type="number" ng-model="reg.IMEI">
+                    <!-- Phone -->
+                    <label>Phone</label>
+                    <input class="input-huge" type="number" ng-model="reg.phone">
+                    <!-- Photo -->
+                    <label>Postal Code</label>
+                    <input class="input-huge" type="number" ng-model="reg.postalCode">
+                  </div>
+                </div>
+                <!-- end of first -->
+
+                <!-- second -->
+                <div class="col-sm-6 col-lg-6">
+                    <!-- first name -->
+                  <label for="name">Driver Photo</label>
+                  <input name="name" class="input-huge" type="text" ng-model="reg.photo">
+                    <!-- last name -->
+                  <label for="surname">Date Of Birth</label>
+                  <script>
+                  $(function() {
+                    $( "#datepicker" ).datepicker();
+                  });
+                  </script>
+                  <input name="surname" class="input-huge" type="text" id="datepicker" placeholder="YYYY-MM-DD" ng-model="reg.date">
+                    <!-- Phone -->
+                    <label>Phone Model</label>
+                    <input class="input-huge" type="text" ng-model="reg.phoneModel">
+                    <!-- Photo -->
+                    <label>Driver Email</label>
+                    <input class="input-huge" type="email" ng-model="reg.email">
+                    <!-- Alias -->
+                    <label>Licence Number</label>
+                    <input class="input-huge" type="number" ng-model="reg.licenceNumber">
+                  <!-- </div> -->
+                </div>
+                <!-- end of second -->
+
+                <div class="footer">
+                    <button type="submit" class="btn btn-success" ng-click ="reg()">Register</button>
+                </div>
+            </form>
+        </div>
+      </div>
+
+    </div>
+</div>

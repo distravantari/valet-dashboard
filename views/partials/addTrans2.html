@@ -1,0 +1,199 @@
+<div class="container">
+    <div class="row all">
+
+    	<div class="col-lg-6">
+
+    		<div class="register-info-wraper">
+    			<div id="register-info">
+
+    				<div class="row">
+              <div class="col-sm-2 col-lg-2">
+
+              </div>
+              <div class="col-sm-6 col-lg-6">
+                <h2>Set Driver Manually</h2>
+              </div>
+              <div class="col-sm-4 col-lg-4">
+                <div class="switch">
+        					<input type="radio" class="switch-input" name="view" value="on" id="on" checked="" onclick="setcontrol()">
+        					<label for="on" class="switch-label switch-label-off">SET</label>
+        					<input type="radio" class="switch-input" name="view" value="off" id="off" onclick="notcontrol()">
+        					<label for="off" class="switch-label switch-label-on">NOT</label>
+        					<span class="switch-selection"></span>
+                </div>
+    				</div>
+				<div class="cont2">
+				</div>
+
+      <!-- <hr> -->
+				</div>
+					<div class="list-of-driver" style="overflow-y: scroll; height:570px;color:white">
+
+            <table class="table">
+             <thead>
+               <tr>
+                 <th>ID</th>
+                 <th>NAME</th>
+               </tr>
+             </thead>
+             <tbody ng-repeat="driver in drivers">
+               <tr>
+                 <a href="#"><td ng-click = "setID(driver.objectId)">{{ driver.objectId }}</td></a>
+                 <td>{{ driver.NAME }}</td>
+               </tr>
+             </tbody>
+           </table>
+
+					</div>
+    			</div>
+    		</div>
+        <!-- end of left black box -->
+
+    	</div>
+
+    	<div class="col-sm-6 col-lg-6">
+    		<div id="register-wraper">
+    		    <form id="register-form" class="form">
+    		        <legend><img src="assets/img/logo30.png" alt="" /> Uncle Transaction</legend>
+
+    		        <div class="body">
+    		        	<!-- Username -->
+  		        		<label for="name">Username</label>
+  		        		<input name="name" class="input-huge email" type="text" ng-model="reg.username">
+      		        	<!-- phone -->
+  		        		<label for="surname">Phone</label>
+  		        		<input name="name" class="input-huge" type="number" ng-model="reg.pnum">
+    		        	<!-- fee -->
+    		        	<label>Fee</label>
+    		        	<input name="name" class="input-huge" type="number" ng-model="reg.fee">
+    		        	<!-- remark -->
+    		        	<label>Remark</label>
+    		        	<input name="name" class="input-huge" type="text" ng-model="reg.remark">
+    		        	<!-- destination -->
+    		        	<label>Destination</label>
+    		        	<input name="name" class="input-huge" type="text" ng-model="reg.destination">
+                  <!-- pickUpAddress -->
+    		        	<label>Pickup address</label>
+    		        	<input name="name" class="input-huge" type="text" ng-model="reg.pickUpAd">
+                  <!-- driverID -->
+                  <div id="driverTemp">
+                    <label>DriverID</label>
+      		        	<input name="name" class="input-huge drID" type="number" ng-model="reg.driverId">
+                  </div>
+    		        </div>
+
+    		        <div class="footer">
+    		            <button type="submit" class="btn btn-success" ng-click ="request()">Request</button>
+    		        </div>
+    		    </form>
+    		</div>
+    	</div>
+
+    </div>
+
+    <!-- laodings screen -->
+    <div class="loading hidden">
+    <div class="row waiting">
+      <div class="col-md-5">
+
+      </div>
+        <img src="assets/img/ellipsis.svg" alt="" />
+    </div>
+
+      <div class="row ">
+        <div class="after-loading ta hidden">
+          <div class="col-sm-1 col-md-3">
+
+          </div>
+          <div class="col-sm-6 col-md-3">
+            <img src="assets/img/monkey.png"  height="300px">
+          </div>
+          <div class="col-sm-6">
+            <h1 class="driver-name"></h1>
+            <h1 class="driver-phone"></h1>
+            <h1 class="driver-credit"></h1>
+            <div class="col-sm-2">
+              <button type="button" class="btn btn-danger" onclick="cancel()">Cancel</button>
+            </div>
+            <div class="col-sm-6">
+              <button type="button" class="btn btn-success" onclick="done()">Done</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="after-loading ka hidden">
+          <div class="col-sm-1 col-md-3">
+
+          </div>
+          <div class="col-sm-6 col-md-3">
+            <img src="assets/img/monkey.png"  height="300px">
+          </div>
+          <div class="col-sm-6">
+            <h1>SORRY</h1>
+            <h1>NO DRIVER FOUND</h1>
+            <div class="col-sm-2">
+              <button type="button" class="btn btn-danger" onclick="cancel()">Cancel</button>
+            </div>
+            <div class="col-sm-6">
+              <button type="button" class="btn btn-success" onclick="tryagain()" ng-click ="request()">Try again</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      // var setID = function(x){
+      //   localStorage.setItem("driverId", x);
+      //   $('.drID').val(x);
+      // }
+
+      var setcontrol = function(){
+        $('.list-of-driver').removeClass('hidden');
+        $('#driverTemp').removeClass('hidden');
+      }
+      var notcontrol = function(){
+        $('.list-of-driver').addClass('hidden');
+        $('#driverTemp').addClass('hidden');
+      }
+
+      var cancel = function () {
+        $('.all').removeClass('blur');
+        $('.loading').addClass('hidden');
+
+        //set status cancel
+        $.ajax({
+            url: domain + '/cancelTrans',
+            dataType: 'text',
+            method: 'POST',
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            data: {
+              username:$('.email').val(),
+              token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE0NTA2NTYyNDh9.Ea_JD2LROIyqk14xO_eQw_JE2VnxgZOV5GoWF-E2OSQ'
+            },
+            success: function(response){
+              // alert(response);
+              alert($('.email').val() +"'s  transaction has been canceled");
+              location.reload();
+            },
+            error: function(xhr, status, error){
+              console.log('error '+trans);
+            },
+            complete: function(){
+           }
+          });
+        //end of ajax
+      }
+      var done = function () {
+        $('.all').removeClass('blur');
+        $('.loading').addClass('hidden');
+        location.reload();
+      }
+      var tryagain = function () {
+        $('.waiting').removeClass('hidden');
+        $('.ta').addClass('hidden');
+        $('.ka').addClass('hidden');
+        // location.reload();
+      }
+    </script>
+</div>

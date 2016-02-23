@@ -1,0 +1,61 @@
+<div class="container">
+
+      <div class="col-sm-12 col-lg-12">
+        <div id="register-wraper">
+            <form id="form" class="form form-trans">
+                <legend><img src="assets/img/logo30.png" alt="" /> Uncle Transaction</legend>
+
+                <!-- right -->
+                <div class="col-sm-4 col-lg-4">
+                </div>
+                <!-- end of right -->
+
+                <!-- left -->
+                <div class="col-sm-8 col-lg-8">
+                  <!-- first -->
+                  <div class="col-sm-5 col-lg-5">
+                    <div class="body">
+
+                      <label for="name">Username</label>
+                      <input name="name" class="input-huge" type="email" ng-model="reg.username">
+
+                      <label>Driver</label>
+                      <input class="input-huge" type="number" placeholder="online driver (ID)" ng-model="reg.driverId">
+
+                      <label>Fee</label>
+                      <input class="fee" type="number" placeholder="Number" ng-model="reg.fee">
+                    </div>
+                  </div>
+                  <!-- end of first -->
+
+                  <!-- second -->
+                  <div class="col-sm-5 col-lg-5">
+                      <!-- Remark -->
+                    <label for="name">Remark</label>
+                    <input name="name" class="input-huge" type="text" ng-model="reg.remark">
+
+                      <!-- Destination -->
+                    <label for="surname">Destination</label>
+                    <input name="surname" class="input-huge" type="text" ng-model="reg.destination">
+
+                    <!-- Pickup Address -->
+                    <label>Pickup</label>
+                    <input class="input-huge" type="text" ng-model="reg.pickUpAddress">
+                    <!-- </div> -->
+                  </div>
+                  <!-- end of second -->
+                </div>
+                <!-- end of left -->
+
+                <div class="footer">
+                    <button type="submit" class="btn btn-success" ng-click ="request()">Request</button>
+                </div>
+            </form>
+        </div>
+        <div class="">
+
+        </div>
+      </div>
+
+    </div>
+</div>
