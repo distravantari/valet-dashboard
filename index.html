@@ -179,5 +179,14 @@
     <script src="assets/js/app.js"></script>
 		<script src="assets/js/controller.js"></script>
 
+    <script type="text/javascript">
+      setTimeout(signout, 1000 * 60 * 60);
+      function signout(){
+        // alert('hahaha');
+        localStorage.setItem('session','undefined');
+        window.location.assign("#/login");
+      }
+    </script>
+
   </body>
 </html>
