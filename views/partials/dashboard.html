@@ -111,18 +111,7 @@
           </div>
         </div>
 
-  <!-- DRIVER ON JOB BLOCK -->
-        <div class="half-unit">
-          <dtitle>Driver On Job</dtitle>
-          <hr>
-          <div class="cont">
-          <p><bold><span class="driveronjob"></span> Drivers</bold></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-3 col-lg-3">
-  <!-- TOTAL REGISTER BLOCK -->
+    <!-- TOTAL REGISTER BLOCK -->
         <div class="half-unit">
           <dtitle>Total Registered User</dtitle>
           <hr>
@@ -131,17 +120,26 @@
           <p><span class="usertoday"></span> Registered Today</p>
           </div>
         </div>
-
-        <!-- SERVER TESTING -->
-        <div class="half-unit">
-              <dtitle>Server TESTING</dtitle>
-              <hr>
-              <div class="cont">
-              <!-- <img src="assets/img/up.png" alt=""> -->
-            <p> <img class="serverimg2" alt="" /><bold><span class="serverstatus2"></span></bold> <span class="serverspeed2"></span></p>
-          </div>
-        </div>
       </div>
+
+      <!-- FAST CONTACT BLOCK -->
+			<div class="col-sm-3 col-lg-3">
+				<div class="dash-unit">
+	      		<dtitle>Isms</dtitle>
+	      		<hr>
+	      		<div class="cont" style="overflow-y: scroll; height:230px;">
+                	 <form>
+                      <p>
+                        NB: you can input more than one phone number seperate by -> ';'
+                        ex: +628121123;+6212314
+                      </p>
+                    	<input type="tel" id="phone" name="phone" placeholder="phone number" ng-model="form.phonenumber">
+                    	<div class="textarea-container"><textarea id="message" name="message" placeholder="Message" ng-model="form.msg"></textarea></div>
+                    	<input type="submit" ng-click ="sendSms()">
+                    </form>
+				</div>
+				</div>
+			</div>
 
   <!-- Transaction BLOCK -->
       <div class="col-sm-3 col-lg-3">

@@ -30,13 +30,12 @@ appControllers.controller('LoginController',['$scope','$http',
         }
       }
 
+      //genereate a unique code for session
       function makeid(){
            var text = "";
            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
            for( var i=0; i < 5; i++ )
                text += possible.charAt(Math.floor(Math.random() * possible.length));
-
            return text;
        }
     }
@@ -599,6 +598,33 @@ appControllers.controller('DashboardController',['$scope','$http',
             }
           }
       });
+
+      //isms
+      $scope.sendSms = function(){
+        var phoneN = $scope.form.phonenumber;
+        var msgs = $scope.form.msg;
+        // alert(phoneN+" "+msgs);
+        // send sms
+        $.ajax({
+            url: domain + '/isms',
+            dataType: 'text',
+            method: 'POST',
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            data: {
+              token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE0NTA2NTYyNDh9.Ea_JD2LROIyqk14xO_eQw_JE2VnxgZOV5GoWF-E2OSQ',
+              dstno: phoneN,
+              msg:msgs
+            },
+            success: function(response){
+              swal("Good job!", "Your message has been sent!", "success");
+            },
+            error: function(xhr, status, error){
+              swal("Cancelled", "Your message is not sent", "error");
+            },
+            complete: function(){
+           }
+          });
+      }
 
       //action log user
       var userLog,  userLogReg, userLogCancel;
