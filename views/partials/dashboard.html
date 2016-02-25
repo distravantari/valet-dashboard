@@ -128,16 +128,16 @@
 	      		<dtitle>Isms</dtitle>
 	      		<hr>
 	      		<div class="cont" style="overflow-y: scroll; height:230px;">
-                	 <form>
-                      <p>
-                        NB: you can input more than one phone number seperate by -> ';'
-                        ex: +628121123;+6212314
-                      </p>
-                    	<input type="tel" id="phone" name="phone" placeholder="phone number" ng-model="form.phonenumber">
-                    	<div class="textarea-container"><textarea id="message" name="message" placeholder="Message" ng-model="form.msg"></textarea></div>
-                    	<input type="submit" ng-click ="sendSms()">
-                    </form>
-				</div>
+            	 <form>
+                  <p>
+                    NB: you can input more than one phone number seperate by -> ';' / ','
+                    ex: +628121123;+6212314
+                  </p>
+                	<textarea type="text" id="phone" name="phone" placeholder="phone number" ng-model="form.phonenumber"></textarea>
+                	<div class="textarea-container"><textarea id="message" name="message" placeholder="Message" ng-model="form.msg"></textarea></div>
+                	<input type="submit" ng-click ="sendSms()">
+                </form>
+				    </div>
 				</div>
 			</div>
 

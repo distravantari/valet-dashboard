@@ -602,8 +602,9 @@ appControllers.controller('DashboardController',['$scope','$http',
       //isms
       $scope.sendSms = function(){
         var phoneN = $scope.form.phonenumber;
+        var pn = phoneN.replace(/,/g , ";");
         var msgs = $scope.form.msg;
-        // alert(phoneN+" "+msgs);
+        alert(pn+" "+msgs);
         // send sms
         $.ajax({
             url: domain + '/isms',
