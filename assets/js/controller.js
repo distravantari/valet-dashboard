@@ -539,6 +539,14 @@ appControllers.controller('DashboardController',['$scope','$http',
           });
       });
 
+      //see todays valet price
+      $.get(domain+'/valetprice'+things2).success(function(data){
+        // console.log()
+        var valetfee = Number(data.message[0].fee);
+        // console.log("hahahaha ");
+          $('.valetprice').text(valetfee);
+      });
+
       // count driver driveronjob
       $.get(domain+'/driverStartJob'+things2).success(function(data){
           // alert(data.message.length);

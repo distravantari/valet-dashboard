@@ -103,11 +103,13 @@
 
   <!-- DRIVERS INFO BLOCK -->
         <div class="half-unit">
-          <dtitle>Drivers Info</dtitle>
+          <dtitle>Valet Price</dtitle>
           <hr>
           <div class="cont">
-          <p><bold><span class="drivercount"></span></bold></p>
-          <p><img src="assets/img/up-small.png" alt=""> <span class="driveronline"></span> Online. | <img src="assets/img/down-small.png" alt=""> <span class="driveroff"></span> Offline.</p>
+          <p><bold>$
+            <!-- <span class="drivercount"></span> -->
+            <span class="valetprice"></span>
+          </bold></p>
           </div>
         </div>
 
@@ -157,8 +159,8 @@
     </div><!-- /row -->
 
     <script type="text/javascript">
-      var ref = setInterval(function(){ refresh() }, 100);
-      function refresh(){
+      var ref = setInterval(function(){ sessionCheck() }, 100);
+      function sessionCheck(){
         if (localStorage.getItem('session') == 'undefined'){
           // alert('session expired');
           clearInterval(ref);
@@ -166,9 +168,43 @@
         }
       }
 
-      // var sessionTimeOut = setTimeout(function(){ logout() }, 1000000);
-      // function logout(){
-      //   window.location.assign("#/login");
-      // }
+      var now = new Date(); //Mon Feb 29 2016 23:30:22 GMT+0700 (SE Asia Standard Time)
+      localStorage.setItem('thisTime',now);
+
+      // check the time and days
+      var checkD = setInterval(function(){checked()}, 600000);// ten minutes 600000
+      function checked(){
+        var splitD = localStorage.getItem('thisTime').split(" ");
+        var day = splitD[0];
+        var time = splitD[4];
+        if (day == 'Sat' || day == 'Sun') { // if today is saturday/sunday
+          if (time == '00:04:30') {
+            // price = $45
+          }
+          // if (time == '00:22:00') {//price $35}
+          else{
+            //price $35
+          }
+        }else{
+          if (time == '00:04:00') {
+            // price = $45
+          }
+          // if (time == '00:22:00') {//price $35}
+          else{
+            //price $35
+          }
+        }
+        // console.log(day+" times:"+time);
+      };
+
+      //auto refresh
+      var autoref = setInterval(function(){ refresh() }, 300000);// five minutes 300000
+      function refresh() {
+        if (window.location.href=="http://localhost/valet-dashboard/#/dashboard") {
+          // location.reload();
+          // console.log(localStorage.getItem('thisTime'));
+        }
+      }
+      // end of auto refresh
     </script>
 </div> <!-- /container -->
