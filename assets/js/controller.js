@@ -540,7 +540,7 @@ appControllers.controller('DashboardController',['$scope','$http',
       });
 
       //see todays valet price
-      $.get(domain+'/valetprice'+things2).success(function(data){
+      $.get(domain+'/valetpricedashboard'+things2).success(function(data){
         // console.log()
         var valetfee = Number(data.message[0].fee);
         // console.log("hahahaha ");
